@@ -1,5 +1,5 @@
 ﻿# GamesAndroidApp
 
-This is a practice project for learning purposes, also as a course assignment.
+This is a practice project for learning purposes, also serves as a course assignment.
 
 An android games store.
