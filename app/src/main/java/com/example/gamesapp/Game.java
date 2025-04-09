@@ -1,5 +1,7 @@
 package com.example.gamesapp;
 
+import android.media.Image;
+
 import java.util.Date;
 
 public class Game {
@@ -12,6 +14,8 @@ public class Game {
     private String platform;
     private String genre;
     private String description;
+
+    private Image poster;
 
     // platforms
     static final String PC = "PC";
