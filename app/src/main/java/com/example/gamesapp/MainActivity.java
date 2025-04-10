@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void handleFilters(){
-        btnFilters.setOnClickListener(e->{
+        btnFilters.setOnClickListener(e->{ // here we have to display a popup filters menu
 
         });
     }
@@ -76,21 +76,21 @@ public class MainActivity extends AppCompatActivity {
         btnSearch.setOnClickListener(e->{
             String gameTitle = editSearch.getText().toString().trim();
 //            Log.i("query", searchQuery);
-
+            IGameDA gameDA = GameDAFactory.getGameDA();
             if(filters == null) {
                 if (gameTitle.equals("")) {
-                    IGameDA gameDA = GameDAFactory.getGameDA();
                     List<Game> list = gameDA.getGames();
                     ArrayAdapter<Game> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, list);
                     listGames.setAdapter(adapter);
                 } else {
-                    IGameDA gameDA = GameDAFactory.getGameDA();
                     List<Game> list = gameDA.getGamesByTitle(gameTitle);
                     ArrayAdapter<Game> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, list);
                     listGames.setAdapter(adapter);
                 }
             }else{
-                // search using filters
+                List<Game> list = gameDA.getGamesByFilters(filters);
+                ArrayAdapter<Game> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, list);
+                listGames.setAdapter(adapter);
             }
         });
     }
