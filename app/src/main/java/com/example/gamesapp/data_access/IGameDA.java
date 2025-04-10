@@ -6,6 +6,7 @@ import java.util.List;
 public interface IGameDA {
     String[] getGenres();
     List<Game> getGames();
-    List<Game> getGames(String genre);
+    List<Game> getGamesByTitle(String title);
+    List<Game> getGamesByFilters(Game filters);
 
 }

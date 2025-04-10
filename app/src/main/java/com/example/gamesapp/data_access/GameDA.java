@@ -3,6 +3,7 @@ package com.example.gamesapp.data_access;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 public class GameDA implements IGameDA {
@@ -149,12 +150,59 @@ public class GameDA implements IGameDA {
     }
 
     @Override
-    public List<Game> getGames(String genre) {
+    public List<Game> getGamesByTitle(String title) {
         List<Game> result = new ArrayList<>();
         for (Game b : games) {
-            if (b.getGenre().equals(genre))
+            if (b.getTitle().toLowerCase().contains(title.toLowerCase()))
                 result.add(b);
         }
+        return result;
+    }
+
+    @Override
+    public List<Game> getGamesByFilters(Game filters) {
+        List<Game> result = new ArrayList<>();
+        for (Game g : games) {
+            // 1) title substring match?
+            if (filters.getTitle() != null &&
+                    !g.getTitle().toLowerCase().contains(filters.getTitle().toLowerCase())) {
+                continue;
+            }
+
+            // 2) exact genre match?
+            if (filters.getGenre() != null &&
+                    !g.getGenre().equalsIgnoreCase(filters.getGenre())) {
+                continue;
+            }
+
+            // 3) exact platform match?
+            if (filters.getPlatform() != null &&
+                    !g.getPlatform().equalsIgnoreCase(filters.getPlatform())) {
+                continue;
+            }
+
+            // 4) minimum rating?
+            if (filters.getRating() > 0 &&
+                    g.getRating() < filters.getRating()) {
+                continue;
+            }
+
+            // 5) maximum price?
+            if (filters.getPrice() > 0 &&
+                    g.getPrice() > filters.getPrice()) {
+                continue;
+            }
+
+            // 6) release date range?
+            Date from = filters.getReleaseDate();
+            if (from != null && g.getReleaseDate().before(from)) {
+                continue;
+            }
+
+            // if we get here, the current game passed all active filters
+            result.add(g);
+        }
+
         return result;
     }
 

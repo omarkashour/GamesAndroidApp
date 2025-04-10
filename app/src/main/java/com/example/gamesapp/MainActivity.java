@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView listGames;
 
-
+    Game filters;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
 
@@ -74,13 +74,23 @@ public class MainActivity extends AppCompatActivity {
 
     private void handleSearch(){
         btnSearch.setOnClickListener(e->{
-            String searchQuery = editSearch.getText().toString().trim();
+            String gameTitle = editSearch.getText().toString().trim();
 //            Log.i("query", searchQuery);
-            if(searchQuery.equals("")) {
-                IGameDA gameDA = GameDAFactory.getGameDA();
-                List<Game> list = gameDA.getGames();
-                ArrayAdapter<Game> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, list);
-                listGames.setAdapter(adapter);
+
+            if(filters == null) {
+                if (gameTitle.equals("")) {
+                    IGameDA gameDA = GameDAFactory.getGameDA();
+                    List<Game> list = gameDA.getGames();
+                    ArrayAdapter<Game> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, list);
+                    listGames.setAdapter(adapter);
+                } else {
+                    IGameDA gameDA = GameDAFactory.getGameDA();
+                    List<Game> list = gameDA.getGamesByTitle(gameTitle);
+                    ArrayAdapter<Game> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, list);
+                    listGames.setAdapter(adapter);
+                }
+            }else{
+                // search using filters
             }
         });
     }
