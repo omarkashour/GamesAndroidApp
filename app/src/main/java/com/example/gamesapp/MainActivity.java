@@ -3,6 +3,9 @@ package com.example.gamesapp;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
+import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -12,6 +15,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import com.example.gamesapp.data_access.Game;
+import com.example.gamesapp.data_access.GameDAFactory;
+import com.example.gamesapp.data_access.IGameDA;
+
+import java.io.Console;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -63,7 +74,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void handleSearch(){
         btnSearch.setOnClickListener(e->{
-
+            String searchQuery = editSearch.getText().toString().trim();
+//            Log.i("query", searchQuery);
+            if(searchQuery.equals("")) {
+                IGameDA gameDA = GameDAFactory.getGameDA();
+                List<Game> list = gameDA.getGames();
+                ArrayAdapter<Game> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, list);
+                listGames.setAdapter(adapter);
+            }
         });
     }
 
@@ -83,5 +101,6 @@ public class MainActivity extends AppCompatActivity {
         btnFilters = findViewById(R.id.btnFilters);
         btnCart = findViewById(R.id.btnCart);
         listGames = findViewById(R.id.listGames);
+        editSearch = findViewById(R.id.editSearch);
     }
 }
