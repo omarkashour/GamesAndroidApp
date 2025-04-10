@@ -1,4 +1,4 @@
-package com.example.gamesapp;
+package com.example.gamesapp.data_access;
 
 import android.media.Image;
 

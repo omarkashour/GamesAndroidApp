@@ -5,10 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical"
     android:layout_gravity="center"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/txtWelcome"
@@ -32,20 +32,49 @@
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <Button
-        android:id="@+id/btnSearch"
+
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Search"
-        app:layout_constraintBaseline_toBaselineOf="@+id/editTextText"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnFilters"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+            android:text="Filters"
+            app:layout_constraintBaseline_toBaselineOf="@+id/editTextText"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/btnCart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="15dp"
+
+            android:text="Shopping Cart" />
+
+        <Button
+            android:id="@+id/btnSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Search"
+            app:layout_constraintBaseline_toBaselineOf="@+id/editTextText"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
     <ListView
         android:id="@+id/listGames"
-        android:layout_marginTop="15dp"
-        android:padding="15dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp"
+        android:padding="15dp" />
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>
