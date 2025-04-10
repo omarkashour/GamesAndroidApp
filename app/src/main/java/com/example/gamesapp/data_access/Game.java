@@ -95,14 +95,12 @@ public class Game {
 
     @Override
     public String toString() {
-        return "Game{" +
-                "title='" + title + '\'' +
-                ", releaseDate=" + releaseDate +
-                ", rating=" + rating +
-                ", price=₪" + price +
-                ", platform='" + platform + '\'' +
-                ", genre='" + genre + '\'' +
-                ", description='" + description + '\'' +
-                '}';
+        return "Title: '" + title + '\'' + "\n" +
+                "ReleaseDate: " + releaseDate +"\n" +
+                "Rating: " + rating +"\n" +
+                "Price: ₪" + price +"\n" +
+                "Platform: '" + platform + '\'' +"\n" +
+                "Genre: '" + genre + '\'' +"\n" +
+                "Description: '" + description + '\'' +"\n";
     }
 }
