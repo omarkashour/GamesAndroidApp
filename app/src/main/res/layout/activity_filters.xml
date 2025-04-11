@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".FiltersActivity"
+    android:padding="35dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:text="Filters"
+        android:textSize="32dp" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="15dp"
+            android:text="Released After:"
+            android:textSize="25dp" />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="left"
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Genres:"
+            android:textSize="25dp"
+            android:layout_marginRight="15dp"
+            android:layout_gravity="top" />
+
+        <!-- container for the two columns -->
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <!-- first column -->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp">
+
+                <CheckBox
+                    android:id="@+id/checkbox_action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Action" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_adventure"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Adventure" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_rpg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RPG" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_family"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Family" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <!-- second column -->
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:id="@+id/checkbox_physics"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Physics" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_sandbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SandBox" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_simulation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Simulation" />
+
+                <CheckBox
+                    android:id="@+id/checkbox_education"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Education" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:text="Platform:"
+            android:textSize="25dp" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radioPC"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PC" />
+
+            <RadioButton
+                android:id="@+id/radioPlaystation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Playstation" />
+
+            <RadioButton
+                android:id="@+id/radioSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nintendo Switch" />
+
+            <RadioButton
+                android:id="@+id/radioXbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Xbox" />
+        </RadioGroup>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+            android:text="Min Rating/10:"
+            android:textSize="25dp" />
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Clear Filters"
+            android:id="@+id/btnClearFilters"
+            android:layout_gravity="center"
+            android:layout_marginRight="15dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Apply Filters"
+            android:id="@+id/btnApplyFilters"
+            android:layout_gravity="center"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
+
+
+
+
