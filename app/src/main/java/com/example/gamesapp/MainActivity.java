@@ -1,5 +1,6 @@
 package com.example.gamesapp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -68,7 +69,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void handleFilters(){
         btnFilters.setOnClickListener(e->{ // here we have to display a popup filters menu
-
+            Intent intent = new Intent(MainActivity.this, FiltersActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -97,7 +99,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void handleCart(){
         btnCart.setOnClickListener(e->{
-
+            Intent intent = new Intent(MainActivity.this, ShoppingCartActivity.class);
+            startActivity(intent);
         });
     }
 

@@ -8,7 +8,8 @@
     android:layout_gravity="center"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:padding="20dp">
 
     <TextView
         android:id="@+id/txtWelcome"
@@ -17,9 +18,8 @@
         android:layout_marginTop="15dp"
         android:text="Welcome to StickyGames!"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_gravity="left"
+        android:textStyle="bold"/>
 
     <EditText
         android:id="@+id/editSearch"

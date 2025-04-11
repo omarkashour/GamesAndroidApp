@@ -6,16 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="35dp"
+    android:padding="24dp"
     tools:context=".FiltersActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="left"
+        android:textStyle="bold"
         android:layout_marginTop="15dp"
         android:text="Filters"
-        android:textSize="32dp" />
+        android:textSize="24sp"
+        />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
@@ -53,13 +55,13 @@
             android:text="Genres:"
             android:textSize="25dp" />
 
-        <!-- container for the two columns -->
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <!-- first column -->
+
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -91,7 +93,7 @@
                     android:text="Family" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
-            <!-- second column -->
+
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
