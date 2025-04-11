@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".FiltersActivity"
-    android:padding="35dp">
+    android:padding="35dp"
+    tools:context=".FiltersActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,6 +31,7 @@
             android:layout_marginRight="15dp"
             android:text="Released After:"
             android:textSize="25dp" />
+
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,30 +41,30 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_gravity="left"
-        android:layout_marginTop="15dp">
+        android:layout_marginTop="15dp"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Genres:"
-            android:textSize="25dp"
+            android:layout_gravity="top"
             android:layout_marginRight="15dp"
-            android:layout_gravity="top" />
+            android:text="Genres:"
+            android:textSize="25dp" />
 
         <!-- container for the two columns -->
         <androidx.appcompat.widget.LinearLayoutCompat
-            android:orientation="horizontal"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <!-- first column -->
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp">
+                android:layout_marginEnd="16dp"
+                android:orientation="vertical">
 
                 <CheckBox
                     android:id="@+id/checkbox_action"
@@ -92,9 +93,9 @@
 
             <!-- second column -->
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
                 <CheckBox
                     android:id="@+id/checkbox_physics"
@@ -123,7 +124,6 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>
-
 
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -196,24 +196,24 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layout_marginTop="100dp">
+        android:layout_marginTop="100dp"
+        android:orientation="horizontal">
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Clear Filters"
             android:id="@+id/btnClearFilters"
-            android:layout_gravity="center"
-            android:layout_marginRight="15dp"/>
-
-        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Apply Filters"
+            android:layout_gravity="center"
+            android:layout_marginRight="15dp"
+            android:text="Clear Filters" />
+
+        <Button
             android:id="@+id/btnApplyFilters"
-            android:layout_gravity="center"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Apply Filters" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
