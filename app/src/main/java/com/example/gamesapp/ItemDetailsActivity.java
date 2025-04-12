@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -42,6 +43,14 @@ public class ItemDetailsActivity extends AppCompatActivity {
 
         setupViews();
         fillFields();
+        handleAddToCart();
+    }
+
+    private void handleAddToCart() {
+        btnAddToCart.setOnClickListener(e->{
+            // TO-DO
+            Toast.makeText(this, "Game added to cart!", Toast.LENGTH_SHORT).show();
+        });
     }
 
     private void fillFields() {
@@ -69,5 +78,6 @@ public class ItemDetailsActivity extends AppCompatActivity {
         txtReleaseDate = findViewById(R.id.txtReleaseDate);
         txtTitle = findViewById(R.id.txtTitle);
         imageGame = findViewById(R.id.imageGame);
+        btnAddToCart = findViewById(R.id.btnAddToCart);
     }
 }
