@@ -52,6 +52,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
         txtReleaseDate.setText("Release Date" + game.getReleaseDate().toString());
         txtPlatform.setText("Platform: " + game.getPlatform());
         txtGenre.setText("Genre: " + game.getGenre());
+        txtQuantity.setText("Quantity: " + game.getQuantity() + " Copies");
     }
 
     private void setupViews() {
