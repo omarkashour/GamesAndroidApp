@@ -2,9 +2,10 @@ package com.example.gamesapp.data_access;
 
 import android.media.Image;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Game {
+public class Game implements Serializable {
 
     // main attributes
     private String title;

@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
     Game filters;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
+    static final String SELECTED_GAME = "SELECTED_GAME";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,8 +60,19 @@ public class MainActivity extends AppCompatActivity {
         handleFilters();
         handleCart();
         handleSearch();
+        handleItemClick();
         
 
+    }
+
+    private void handleItemClick() {
+
+        listGames.setOnItemClickListener((adapterView, view, i, l) -> {
+            Game selectedGame = (Game) adapterView.getItemAtPosition(i);
+            Intent intent = new Intent(MainActivity.this, ItemDetailsActivity.class);
+            intent.putExtra(SELECTED_GAME, selectedGame);
+            startActivity(intent);
+        });
     }
 
     private void checkPrefs() {
