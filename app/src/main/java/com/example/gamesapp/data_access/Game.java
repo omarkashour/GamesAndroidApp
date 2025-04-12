@@ -17,7 +17,7 @@ public class Game implements Serializable {
     private String description;
     private int quantity = 1;
 
-    private Image poster;
+    private int coverImage;
 
     // platforms
     static final String PC = "PC";
@@ -25,7 +25,7 @@ public class Game implements Serializable {
     static final String XBOX = "XBOX";
     static final String NINTENDO_SWITCH = "NINTENDO SWITCH";
 
-    public Game(String title, Date releaseDate, int rating, int price, String platform, String genre, String description, int quantity) {
+    public Game(String title, Date releaseDate, int rating, int price, String platform, String genre, String description, int quantity, int coverImage) {
         this.title = title;
         this.releaseDate = releaseDate;
         this.rating = rating;
@@ -34,6 +34,15 @@ public class Game implements Serializable {
         this.genre = genre;
         this.description = description;
         this.quantity = quantity;
+        this.coverImage = coverImage;
+    }
+
+    public int getCoverImage() {
+        return coverImage;
+    }
+
+    public void setCoverImage(int coverImage) {
+        this.coverImage = coverImage;
     }
 
     public int getQuantity() {

@@ -3,6 +3,7 @@ package com.example.gamesapp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -24,6 +25,7 @@ public class ItemDetailsActivity extends AppCompatActivity {
     private TextView txtPlatform;
     private TextView txtReleaseDate;
     private TextView txtPrice;
+    private ImageView imageGame;
 
     Button btnAddToCart;
 
@@ -49,10 +51,12 @@ public class ItemDetailsActivity extends AppCompatActivity {
         txtDescription.setText("Description: " + game.getDescription());
         txtPrice.setText("Price: ₪" + game.getPrice());
         txtRating.setText("Rating: " + game.getRating());
-        txtReleaseDate.setText("Release Date" + game.getReleaseDate().toString());
+        txtReleaseDate.setText("Release Date: " + game.getReleaseDate().toString());
         txtPlatform.setText("Platform: " + game.getPlatform());
         txtGenre.setText("Genre: " + game.getGenre());
         txtQuantity.setText("Quantity: " + game.getQuantity() + " Copies");
+        imageGame.setImageDrawable(getResources().getDrawable(game.getCoverImage(), getApplicationContext().getTheme()));
+
     }
 
     private void setupViews() {
@@ -64,5 +68,6 @@ public class ItemDetailsActivity extends AppCompatActivity {
         txtQuantity = findViewById(R.id.txtQuantity);
         txtReleaseDate = findViewById(R.id.txtReleaseDate);
         txtTitle = findViewById(R.id.txtTitle);
+        imageGame = findViewById(R.id.imageGame);
     }
 }

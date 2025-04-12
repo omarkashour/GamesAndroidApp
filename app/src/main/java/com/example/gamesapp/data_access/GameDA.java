@@ -1,5 +1,7 @@
 package com.example.gamesapp.data_access;
 
+import com.example.gamesapp.R;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
@@ -24,7 +26,8 @@ public class GameDA implements IGameDA {
                 Game.PC,
                 "RPG",
                 "An open-world RPG where you play Geralt of Rivia on a monster-hunting journey.",
-                9
+                9,
+                R.drawable.thewitcher3pc
         ));
 
         // 2) Uncharted 4 (Adventure, PlayStation)
@@ -37,7 +40,8 @@ public class GameDA implements IGameDA {
                 Game.PLAYSTATION,
                 "Adventure",
                 "Nathan Drake returns in this action-adventure epic filled with treasure hunts.",
-                32
+                32,
+                R.drawable.uncharted4ps4
         ));
 
         // 3) Forza Horizon 5 (Simulation, Xbox)
@@ -50,7 +54,8 @@ public class GameDA implements IGameDA {
                 Game.XBOX,
                 "Simulation",
                 "Experience the vibrant landscapes of Mexico in this open-world racing sim.",
-                54
+                54,
+                R.drawable.forza5xbox
         ));
 
         // 4) Minecraft (SandBox, PC)
@@ -63,7 +68,8 @@ public class GameDA implements IGameDA {
                 Game.PC,
                 "SandBox",
                 "A block-building sandbox game that lets you create and explore infinite worlds.",
-                16
+                16,
+                R.drawable.minecraftpc
         ));
 
         // 5) Animal Crossing: New Horizons (Family, Nintendo Switch)
@@ -76,7 +82,8 @@ public class GameDA implements IGameDA {
                 Game.NINTENDO_SWITCH,
                 "Family",
                 "Build your own island paradise and befriend charming animal villagers.",
-                27
+                27,
+                R.drawable.animalcrossingnintendo
         ));
 
         // 6) Portal 2 (Physics, PC)
@@ -89,7 +96,8 @@ public class GameDA implements IGameDA {
                 Game.PC,
                 "Physics",
                 "Solve mind-bending puzzles using your portal gun in this critically acclaimed sequel.",
-                1453
+                1453,
+                R.drawable.portal2pc
         ));
 
         // 7) Kerbal Space Program (Education, PC)
@@ -102,48 +110,49 @@ public class GameDA implements IGameDA {
                 Game.PC,
                 "Education",
                 "Design and launch rockets to explore space, learning real orbital mechanics.",
-                134
+                134,
+                R.drawable.ksppc
         ));
 
         // 8) God of War (Action, PlayStation)
         cal.set(2018, Calendar.APRIL, 20);
         games.add(new Game("God of War", cal.getTime(), 10, 189, Game.PLAYSTATION, "Action",
-                "A visceral third‑person action game following Kratos and his son Atreus through Norse realms.",16));
+                "A visceral third‑person action game following Kratos and his son Atreus through Norse realms.", 16,R.drawable.gowps5));
 
         // 9) Hollow Knight (Indie, PC)
         cal.set(2017, Calendar.FEBRUARY, 24);
         games.add(new Game("Hollow Knight", cal.getTime(), 9, 79, Game.PC, "Adventure",
-                "A beautifully hand‑drawn Metroidvania with deep exploration and tight combat.",150));
+                "A beautifully hand‑drawn Metroidvania with deep exploration and tight combat.", 150,R.drawable.hollowknightpc));
 
         // 10) Civilization VI (Strategy, PC)
         cal.set(2016, Calendar.OCTOBER, 21);
         games.add(new Game("Civilization VI", cal.getTime(), 8, 129, Game.PC, "Simulation",
-                "Turn‑based strategy where you build an empire to stand the test of time.", 19));
+                "Turn‑based strategy where you build an empire to stand the test of time.", 19,R.drawable.civ4pc));
 
         // 11) Stardew Valley (Simulation, Nintendo Switch)
         cal.set(2016, Calendar.FEBRUARY, 26);
         games.add(new Game("Stardew Valley", cal.getTime(), 9, 99, Game.NINTENDO_SWITCH, "SandBox",
-                "A farming simulator meets RPG—grow crops, raise animals, and build relationships.", 12));
+                "A farming simulator meets RPG—grow crops, raise animals, and build relationships.", 12,R.drawable.stardewvalleyswitchjpg));
 
         // 12) Celeste (Indie, PC)
         cal.set(2018, Calendar.JANUARY, 25);
         games.add(new Game("Celeste", cal.getTime(), 10, 69, Game.PC, "Adventure",
-                "A precision platformer about climbing a mountain and overcoming personal challenges.", 36));
+                "A precision platformer about climbing a mountain and overcoming personal challenges.", 36, R.drawable.celestepc));
 
         // 13) The Legend of Zelda: Breath of the Wild (Adventure, Nintendo Switch)
         cal.set(2017, Calendar.MARCH, 3);
         games.add(new Game("The Legend of Zelda: Breath of the Wild", cal.getTime(), 10, 199, Game.NINTENDO_SWITCH, "Adventure",
-                "An open‑world masterpiece that redefines exploration and freedom in gaming.", 52));
+                "An open‑world masterpiece that redefines exploration and freedom in gaming.", 52,R.drawable.zeldabowswitch));
 
-        // 14) FIFA 22 (Sports, PC)
+        // 14) FIFA 25 (Sports, PC)
         cal.set(2021, Calendar.OCTOBER, 1);
-        games.add(new Game("FIFA 22", cal.getTime(), 7, 159, Game.PC, "Simulation",
-                "The latest in EA’s football series with HyperMotion technology for realistic gameplay.", 83));
+        games.add(new Game("FC 25", cal.getTime(), 7, 159, Game.PC, "Simulation",
+                "The latest in EA’s football series with HyperMotion technology for realistic gameplay.", 83,R.drawable.fc25pc));
 
         // 15) Among Us (Party, PC)
         cal.set(2018, Calendar.JUNE, 15);
         games.add(new Game("Among Us", cal.getTime(), 8, 39, Game.PC, "Education",
-                "A social deduction party game where crewmates root out impostors aboard a spaceship.",71));
+                "A social deduction party game where crewmates root out impostors aboard a spaceship.", 71,R.drawable.amonguspc));
     }
 
     @Override
