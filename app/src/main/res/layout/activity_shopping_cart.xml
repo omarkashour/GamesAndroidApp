@@ -5,10 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F5"
     android:padding="24dp">
 
-    <!-- Card container -->
     <LinearLayout
         android:id="@+id/cardContainer"
         android:layout_width="0dp"

@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     private void handleItemClick() {
 
         listGames.setOnItemClickListener((adapterView, view, i, l) -> {
@@ -104,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void handleFilters(){
-        btnFilters.setOnClickListener(e->{ // here we have to display a popup filters menu
+        btnFilters.setOnClickListener(e->{
             Intent intent = new Intent(MainActivity.this, FiltersActivity.class);
             startActivity(intent);
         });
@@ -112,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void handleSearch(){
         btnSearch.setOnClickListener(e->{
+            checkPrefs(); // update games list before searching
             String gameTitle = editSearch.getText().toString().trim();
 //            Log.i("query", searchQuery);
             if(filters == null) {

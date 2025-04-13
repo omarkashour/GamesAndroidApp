@@ -30,6 +30,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
     private Button btnCheckout;
     private ListView listCart;
     private TextView txtTotalPrice;
+    static final String TOTAL = "TOTAL";
     private int total = 0;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
@@ -54,24 +55,29 @@ public class ShoppingCartActivity extends AppCompatActivity {
     private void handleCheckout() {
         btnCheckout.setOnClickListener(e->{
             Intent intent = new Intent(ShoppingCartActivity.this, CheckoutActivity.class);
-//            intent.putExtra()
+            intent.putExtra(TOTAL,total);
             startActivity(intent);
+            this.finish();
         });
     }
 
     private void handleClearCart() {
         btnClearCart.setOnClickListener(e->{
-            boolean flag = prefs.getBoolean(ItemDetailsActivity.FLAG_CART, false);
-            Gson gson = new Gson();
-            if (flag) {
-                List<Game> cart = new ArrayList<>();
-                String json = gson.toJson(cart);
-                editor.putString(ItemDetailsActivity.CART, json);
-                editor.commit();
-                fillView(cart);
-                updateTotalPrice(cart);
-            }
+            clearCart();
         });
+    }
+
+     void clearCart() {
+        boolean flag = prefs.getBoolean(ItemDetailsActivity.FLAG_CART, false);
+        Gson gson = new Gson();
+        if (flag) {
+            List<Game> cart = new ArrayList<>();
+            String json = gson.toJson(cart);
+            editor.putString(ItemDetailsActivity.CART, json);
+            editor.commit();
+            fillView(cart);
+            updateTotalPrice(cart);
+        }
     }
 
     private void setupPrefs() {
