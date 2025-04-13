@@ -1,5 +1,7 @@
 package com.example.gamesapp.data_access;
 
+import android.content.SharedPreferences;
+
 import com.example.gamesapp.R;
 
 import java.util.ArrayList;
@@ -153,7 +155,11 @@ public class GameDA implements IGameDA {
         cal.set(2018, Calendar.JUNE, 15);
         games.add(new Game("Among Us", cal.getTime(), 8, 39, Game.PC, "Education",
                 "A social deduction party game where crewmates root out impostors aboard a spaceship.", 71,R.drawable.amonguspc));
+
+
     }
+
+
 
     @Override
     public String[] getGenres() {
@@ -165,62 +171,6 @@ public class GameDA implements IGameDA {
         return games;
     }
 
-    @Override
-    public List<Game> getGamesByTitle(String title) {
-        List<Game> result = new ArrayList<>();
-        for (Game b : games) {
-            if (b.getTitle().toLowerCase().contains(title.toLowerCase()))
-                result.add(b);
-        }
-        return result;
-    }
-
-    @Override
-    public List<Game> getGamesByFilters(Game filters) {
-        List<Game> result = new ArrayList<>();
-        for (Game g : games) {
-            // 1) title substring match?
-            if (filters.getTitle() != null &&
-                    !g.getTitle().toLowerCase().contains(filters.getTitle().toLowerCase())) {
-                continue;
-            }
-
-            // 2) exact genre match?
-            if (filters.getGenre() != null &&
-                    !g.getGenre().equalsIgnoreCase(filters.getGenre())) {
-                continue;
-            }
-
-            // 3) exact platform match?
-            if (filters.getPlatform() != null &&
-                    !g.getPlatform().equalsIgnoreCase(filters.getPlatform())) {
-                continue;
-            }
-
-            // 4) minimum rating?
-            if (filters.getRating() > 0 &&
-                    g.getRating() < filters.getRating()) {
-                continue;
-            }
-
-            // 5) maximum price?
-            if (filters.getPrice() > 0 &&
-                    g.getPrice() > filters.getPrice()) {
-                continue;
-            }
-
-            // 6) release date range?
-            Date from = filters.getReleaseDate();
-            if (from != null && g.getReleaseDate().before(from)) {
-                continue;
-            }
-
-            // if we get here, the current game passed all active filters
-            result.add(g);
-        }
-
-        return result;
-    }
 
 
 }
