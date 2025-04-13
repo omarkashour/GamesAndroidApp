@@ -1,7 +1,9 @@
 package com.example.gamesapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,6 +16,12 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.gamesapp.data_access.Game;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ItemDetailsActivity extends AppCompatActivity {
 
@@ -29,6 +37,12 @@ public class ItemDetailsActivity extends AppCompatActivity {
     private ImageView imageGame;
 
     Button btnAddToCart;
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
+    static final String CART = "CART";
+    static final String FLAG_CART = "FLAG_CART";
+    static boolean flag = false;
+    Game game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,20 +56,47 @@ public class ItemDetailsActivity extends AppCompatActivity {
         });
 
         setupViews();
+        setupPrefs();
         fillFields();
         handleAddToCart();
     }
 
+    private void setupPrefs() {
+        prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = prefs.edit();
+    }
+
     private void handleAddToCart() {
-        btnAddToCart.setOnClickListener(e->{
-            // TO-DO
+        btnAddToCart.setOnClickListener(e -> {
+            addToCart();
             Toast.makeText(this, "Game added to cart!", Toast.LENGTH_SHORT).show();
         });
     }
 
+    private void addToCart() {
+        boolean flag = prefs.getBoolean(FLAG_CART, false);
+        Gson gson = new Gson();
+        if (flag) {
+            String json = prefs.getString(CART,"");
+            Type type = new TypeToken<List<Game>>() {}.getType();
+            List<Game> cart = gson.fromJson(json,type);
+            cart.add(game);
+            String editedJson = gson.toJson(cart);
+            editor.putString(CART,editedJson);
+            editor.commit();
+        } else {
+            List<Game> cart = new ArrayList<>();
+            cart.add(game);
+            String json = gson.toJson(cart);
+            editor.putString(CART, json);
+            editor.putBoolean(FLAG_CART, true);
+            editor.commit();
+        }
+    }
+
     private void fillFields() {
         Intent intent = getIntent();
-        Game game = (Game) intent.getSerializableExtra(MainActivity.SELECTED_GAME);
+        game = (Game) intent.getSerializableExtra(MainActivity.SELECTED_GAME);
         txtTitle.setText(game.getTitle());
         txtDescription.setText("Description: " + game.getDescription());
         txtPrice.setText("Price: ₪" + game.getPrice());

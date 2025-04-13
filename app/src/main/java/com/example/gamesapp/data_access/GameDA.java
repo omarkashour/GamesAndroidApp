@@ -171,6 +171,4 @@ public class GameDA implements IGameDA {
         return games;
     }
 
-
-
 }

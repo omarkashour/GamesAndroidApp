@@ -115,12 +115,10 @@ public class Game implements Serializable {
 
     @Override
     public String toString() {
-        return "Title: '" + title + '\'' + "\n" +
-                "ReleaseDate: " + releaseDate +"\n" +
+        return "Title: " + title  + "\n" +
+                "Genre: " + genre  +"\n" +
                 "Rating: " + rating +"\n" +
-                "Price: ₪" + price +"\n" +
-                "Platform: '" + platform + '\'' +"\n" +
-                "Genre: '" + genre + '\'' +"\n" +
-                "Description: '" + description + '\'' +"\n";
+                "Platform: " + platform  +"\n" +
+                "Price: ₪" + price +"\n";
     }
 }

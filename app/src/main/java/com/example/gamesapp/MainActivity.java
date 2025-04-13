@@ -91,13 +91,15 @@ public class MainActivity extends AppCompatActivity {
             String json = prefs.getString(GAMES,"");
             Type type = new TypeToken<List<Game>>() {}.getType();
             games = g.fromJson(json, type);
+            Log.i("data_debug", "Read data");
         }else{
             IGameDA gameDA = GameDAFactory.getGameDA();
-            games = gameDA.getGames();
-            String json = g.toJson(games);
+            String json = g.toJson(gameDA.getGames());
             editor.putString("GAMES",json);
             editor.putBoolean(FLAG, true);
             editor.commit();
+            Log.i("data_debug", "Wrote data");
+            checkPrefs(); // to read the written data from sharedpreferences
         }
     }
 

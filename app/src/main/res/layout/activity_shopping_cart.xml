@@ -19,12 +19,14 @@
         android:textStyle="bold" />
 
     <ListView
+        android:id="@+id/listCart"
         android:layout_width="wrap_content"
         android:layout_height="500dp"
         android:layout_marginTop="15dp">
     </ListView>
 
     <TextView
+        android:id="@+id/txtTotalPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Total: ₪0"
@@ -40,7 +42,7 @@
         android:layout_marginTop="15dp">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnClearCart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -48,7 +50,7 @@
             android:layout_marginRight="15dp"/>
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnCheckout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
