@@ -69,11 +69,14 @@ public class ItemDetailsActivity extends AppCompatActivity {
     private void handleAddToCart() {
         btnAddToCart.setOnClickListener(e -> {
             addToCart();
-            Toast.makeText(this, "Game added to cart!", Toast.LENGTH_SHORT).show();
         });
     }
 
     private void addToCart() {
+        if(game.getQuantity() == 0){
+            Toast.makeText(this, "Out of stock!", Toast.LENGTH_SHORT).show();
+            return;
+        }
         boolean flag = prefs.getBoolean(FLAG_CART, false);
         Gson gson = new Gson();
         if (flag) {
@@ -92,6 +95,8 @@ public class ItemDetailsActivity extends AppCompatActivity {
             editor.putBoolean(FLAG_CART, true);
             editor.commit();
         }
+        Toast.makeText(this, "Game added to cart!", Toast.LENGTH_SHORT).show();
+
     }
 
     private void fillFields() {
