@@ -37,6 +37,10 @@ public class Game implements Serializable {
         this.coverImage = coverImage;
     }
 
+    public Game(){
+
+    }
+
     public int getCoverImage() {
         return coverImage;
     }

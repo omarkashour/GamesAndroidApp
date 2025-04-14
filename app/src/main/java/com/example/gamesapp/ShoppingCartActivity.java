@@ -67,7 +67,7 @@ public class ShoppingCartActivity extends AppCompatActivity {
         });
     }
 
-     void clearCart() {
+    private void clearCart() {
         boolean flag = prefs.getBoolean(ItemDetailsActivity.FLAG_CART, false);
         Gson gson = new Gson();
         if (flag) {

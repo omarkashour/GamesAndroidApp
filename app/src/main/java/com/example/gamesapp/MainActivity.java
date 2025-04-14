@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void handleItemClick() {
-
         listGames.setOnItemClickListener((adapterView, view, i, l) -> {
             Game selectedGame = (Game) adapterView.getItemAtPosition(i);
             Intent intent = new Intent(MainActivity.this, ItemDetailsActivity.class);

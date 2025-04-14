@@ -26,14 +26,12 @@
 
 
         <TextView
-            android:id="@+id/titleFilters"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Filters"
             android:textSize="24sp"
             android:textStyle="bold"
             android:gravity="center"/>
-
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,7 +42,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Released After:"
+                android:text="Min Rating/10:"
                 android:textSize="16sp"
                 android:layout_gravity="center_vertical"/>
 
@@ -53,11 +51,12 @@
                 android:layout_height="wrap_content"/>
 
             <Spinner
-                android:id="@+id/spinnerReleasedAfter"
+                android:id="@+id/spinnerMinRating"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
         </LinearLayout>
+
 
 
         <TextView
@@ -181,29 +180,6 @@
         </RadioGroup>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Min Rating/10:"
-                android:textSize="16sp"
-                android:layout_gravity="center_vertical"/>
-
-            <Space
-                android:layout_width="8dp"
-                android:layout_height="wrap_content"/>
-
-            <Spinner
-                android:id="@+id/spinnerMinRating"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-        </LinearLayout>
 
         <!-- Buttons -->
         <LinearLayout

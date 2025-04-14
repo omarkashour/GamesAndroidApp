@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CheckoutActivity extends AppCompatActivity {
@@ -37,7 +38,6 @@ public class CheckoutActivity extends AppCompatActivity {
     private Button btnCancel;
     private Button btnCheckout;
     private TextView txtTitle;
-    private int total = 0;
 
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
@@ -86,10 +86,21 @@ public class CheckoutActivity extends AppCompatActivity {
             String json2 = g.toJson(games);
             editor.putString(MainActivity.GAMES,json2);
             editor.commit();
+            clearCart();
             Toast.makeText(this, "Checkout Successful!", Toast.LENGTH_SHORT).show();
             this.finish();
 
         });
+    }
+    private void clearCart(){
+        boolean flag = prefs.getBoolean(ItemDetailsActivity.FLAG_CART, false);
+        Gson gson = new Gson();
+        if (flag) {
+            List<Game> cart = new ArrayList<>();
+            String json = gson.toJson(cart);
+            editor.putString(ItemDetailsActivity.CART, json);
+            editor.commit();
+        }
     }
 
 
@@ -108,8 +119,8 @@ public class CheckoutActivity extends AppCompatActivity {
 
     private void handleIntent() {
         Intent intent = getIntent();
-        total = intent.getIntExtra(ShoppingCartActivity.TOTAL,0);
-        txtTitle.setText("Checkout (₪"+total+")");
+        int total = intent.getIntExtra(ShoppingCartActivity.TOTAL, 0);
+        txtTitle.setText("Checkout (₪"+ total +")");
     }
 
     private void handleCancel() {
