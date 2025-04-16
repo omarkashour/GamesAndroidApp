@@ -1,6 +1,8 @@
 package com.example.gamesapp;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
@@ -17,9 +19,7 @@ import com.example.gamesapp.data_access.Game;
 
 public class FiltersActivity extends AppCompatActivity {
 
-    private Spinner spinnerReleasedAfter;
     private Spinner spinnerMinRating;
-
     private CheckBox checkboxAction;
     private CheckBox checkboxAdventure;
     private CheckBox checkboxRpg;
@@ -38,6 +38,8 @@ public class FiltersActivity extends AppCompatActivity {
     private Button btnClearFilters;
     private Button btnApplyFilters;
 
+    static final String FILTERS = "FILTERS";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,14 +56,52 @@ public class FiltersActivity extends AppCompatActivity {
     }
 
     private void handleApply() {
-        btnApplyFilters.setOnClickListener(e->{
+        btnApplyFilters.setOnClickListener(e -> {
             Game filters = new Game();
+
+            StringBuilder genresBuilder = new StringBuilder();
+
+            if (checkboxAction.isChecked()) genresBuilder.append("Action,");
+            if (checkboxAdventure.isChecked()) genresBuilder.append("Adventure,");
+            if (checkboxRpg.isChecked()) genresBuilder.append("RPG,");
+            if (checkboxFamily.isChecked()) genresBuilder.append("Family,");
+            if (checkboxPhysics.isChecked()) genresBuilder.append("Physics,");
+            if (checkboxSandbox.isChecked()) genresBuilder.append("Sandbox,");
+            if (checkboxSimulation.isChecked()) genresBuilder.append("Simulation,");
+            if (checkboxEducation.isChecked()) genresBuilder.append("Education,");
+
+            String genres = genresBuilder.toString();
+            if (genres.endsWith(",")) {
+                genres = genres.substring(0, genres.length() - 1);
+            }
+
+            filters.setGenre(genres);
+
+            int selectedPlatformId = radioGroupPlatform.getCheckedRadioButtonId();
+            if (selectedPlatformId == radioPC.getId()) {
+                filters.setPlatform(Game.PC);
+            } else if (selectedPlatformId == radioPlaystation.getId()) {
+                filters.setPlatform(Game.PLAYSTATION);
+            } else if (selectedPlatformId == radioSwitch.getId()) {
+                filters.setPlatform(Game.NINTENDO_SWITCH);
+            } else if (selectedPlatformId == radioXbox.getId()) {
+                filters.setPlatform(Game.XBOX);
+            }
+
+            Integer minRating = (Integer) spinnerMinRating.getSelectedItem();
+            filters.setRating(minRating);
+
+            Intent intent = new Intent(FiltersActivity.this , MainActivity.class);
+            intent.putExtra(FILTERS, filters);
+            startActivity(intent);
+
         });
     }
 
     private void handleClear() {
         btnClearFilters.setOnClickListener(e->{
-
+            Intent intent = new Intent(FiltersActivity.this , MainActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -70,7 +110,10 @@ public class FiltersActivity extends AppCompatActivity {
     private void setupViews() {
 
         spinnerMinRating = findViewById(R.id.spinnerMinRating);
-
+        Integer[] ratings = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        ArrayAdapter<Integer> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, ratings);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerMinRating.setAdapter(adapter);
 
         checkboxAction = findViewById(R.id.checkbox_action);
         checkboxAdventure = findViewById(R.id.checkbox_adventure);

@@ -20,10 +20,10 @@ public class Game implements Serializable {
     private int coverImage;
 
     // platforms
-    static final String PC = "PC";
-    static final String PLAYSTATION = "PLAYSTATION";
-    static final String XBOX = "XBOX";
-    static final String NINTENDO_SWITCH = "NINTENDO SWITCH";
+    public static final String PC = "PC";
+    public  static final String PLAYSTATION = "PLAYSTATION";
+    public static final String XBOX = "XBOX";
+    public static final String NINTENDO_SWITCH = "NINTENDO SWITCH";
 
     public Game(String title, Date releaseDate, int rating, int price, String platform, String genre, String description, int quantity, int coverImage) {
         this.title = title;

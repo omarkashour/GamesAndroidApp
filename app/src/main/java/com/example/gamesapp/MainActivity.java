@@ -66,12 +66,16 @@ public class MainActivity extends AppCompatActivity {
         setupViews();
         setupPrefs();
         checkPrefs();
+        checkFilters();
         handleFilters();
         handleCart();
         handleSearch();
         handleItemClick();
-        
+    }
 
+    private void checkFilters() {
+        Intent intent = getIntent();
+        filters = (Game) intent.getSerializableExtra("FILTERS");
     }
 
 
@@ -125,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
                     listGames.setAdapter(adapter);
                 }
             }else{
+                games = getGamesByFilters(filters);
                 ArrayAdapter<Game> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, games);
                 listGames.setAdapter(adapter);
             }
@@ -162,44 +167,36 @@ public class MainActivity extends AppCompatActivity {
 
     public List<Game> getGamesByFilters(Game filters) {
         List<Game> result = new ArrayList<>();
+
         for (Game g : games) {
-            // 1) title substring match?
+
             if (filters.getTitle() != null &&
                     !g.getTitle().toLowerCase().contains(filters.getTitle().toLowerCase())) {
                 continue;
             }
 
-            // 2) exact genre match?
-            if (filters.getGenre() != null &&
-                    !g.getGenre().equalsIgnoreCase(filters.getGenre())) {
+            if (filters.getRating() > 0 && g.getRating() < filters.getRating()) {
                 continue;
             }
 
-            // 3) exact platform match?
+            if (filters.getGenre() != null && !filters.getGenre().equals("")) {
+                String[] selectedGenres = filters.getGenre().split(",");
+                boolean match = false;
+                for (String genre : selectedGenres) {
+                    if (genre.trim().equalsIgnoreCase(g.getGenre())) {
+                        match = true;
+                        break;
+                    }
+                }
+                if (!match) continue;
+            }
+
+
             if (filters.getPlatform() != null &&
                     !g.getPlatform().equalsIgnoreCase(filters.getPlatform())) {
                 continue;
             }
 
-            // 4) minimum rating?
-            if (filters.getRating() > 0 &&
-                    g.getRating() < filters.getRating()) {
-                continue;
-            }
-
-            // 5) maximum price?
-            if (filters.getPrice() > 0 &&
-                    g.getPrice() > filters.getPrice()) {
-                continue;
-            }
-
-            // 6) release date range?
-            Date from = filters.getReleaseDate();
-            if (from != null && g.getReleaseDate().before(from)) {
-                continue;
-            }
-
-            // if we get here, the current game passed all active filters
             result.add(g);
         }
 
