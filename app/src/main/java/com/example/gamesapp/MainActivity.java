@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnCart;
 
     private ListView listGames;
+    private ImageView imgLogo;
 
     Game filters;
     SharedPreferences prefs;
@@ -154,6 +156,8 @@ public class MainActivity extends AppCompatActivity {
         btnCart = findViewById(R.id.btnCart);
         listGames = findViewById(R.id.listGames);
         editSearch = findViewById(R.id.editSearch);
+        imgLogo = findViewById(R.id.imgLogo);
+        imgLogo.setImageDrawable(getResources().getDrawable(R.drawable.stickygamesrounded,getApplicationContext().getTheme()));
     }
 
     public List<Game> getGamesByTitle(String title) {
