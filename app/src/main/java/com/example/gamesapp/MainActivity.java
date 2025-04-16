@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void checkFilters() {
         Intent intent = getIntent();
-        filters = (Game) intent.getSerializableExtra("FILTERS");
+        filters = (Game) intent.getSerializableExtra(FiltersActivity.FILTERS);
     }
 
 
